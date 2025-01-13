@@ -1,0 +1,41 @@
+*,
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: "Open Sans", serif;
+  max-width: 100%;
+}
+
+@mixin ellipsis($lines: 1) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  padding-right: 0px;
+  line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@mixin column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
