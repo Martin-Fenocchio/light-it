@@ -3,7 +3,6 @@ import PatientItem from "./PatientItem";
 
 function PatientsList() {
   const { patientsPage } = usePatients({ fetch: true });
-  console.log("patientsPage", patientsPage);
 
   return (
     <section className="patients-list">

@@ -1,18 +1,26 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePatientsContext } from "../context/patients-context";
 import axios from "axios";
-import { debounce } from "lodash";
 import { IPatient } from "../models/patients-models";
 
 const colors = ["#FFD6BA", "#FFC0CB", "#B0E0E6", "#98FB98", "#FFA07A"];
 
 export const usePatients = (config: { fetch?: boolean }) => {
-  const { setPatientsList, patientsPage, setPatientsPage } =
-    usePatientsContext();
+  const {
+    setPatientsList,
+    patientsPage,
+    patientsList,
+    setPatientsPage,
+    setPage,
+    searchController,
+    setSearchController,
+    totalCount,
+    setTotalCount,
+    page,
+  } = usePatientsContext();
 
   const [isLoadingList, setIsLoadingList] = useState(false);
-  const [searchController, setSearchController] = useState("");
 
   const handleGetPatients = async () => {
     setIsLoadingList(true);
@@ -29,29 +37,32 @@ export const usePatients = (config: { fetch?: boolean }) => {
     });
 
     setPatientsList?.(payload);
-    setPatientsPage?.(payload.slice(0, 12));
+    setTotalCount(payload.length);
+    setPatientsPage?.(payload.slice(0 * page, 12));
 
     setIsLoadingList(false);
   };
 
   const handleonChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchController(e.target.value);
-    debounceSearch(e.target.value);
   };
 
-  const handleFilterPatients = (value: string) => {
-    setPatientsList?.((list) => {
-      const filteredPatients = (list ?? []).filter((patient) =>
-        patient.name.toLowerCase().includes(value.toLowerCase())
-      );
+  const getPatientsPage = () => {
+    const filteredList = patientsList.filter((patient) =>
+      patient.name.toLowerCase().includes(searchController.toLowerCase())
+    );
 
-      setPatientsPage?.(filteredPatients.slice(0, 12));
+    const skip = 12 * page;
 
-      return list;
-    });
+    setTotalCount(filteredList.length);
+    setPatientsPage?.(filteredList.slice(skip, skip + 12));
   };
 
-  const debounceSearch = useCallback(debounce(handleFilterPatients, 300), []);
+  const handleOnChangePage = (payload: number) => {
+    setPage(payload);
+  };
+
+  useEffect(getPatientsPage, [searchController, page]);
 
   useEffect(() => {
     if (config.fetch) handleGetPatients();
@@ -62,5 +73,9 @@ export const usePatients = (config: { fetch?: boolean }) => {
     isLoadingList,
     searchController,
     handleonChangeSearch,
+    patientsList: patientsList || [],
+    amountOfPages: Math.ceil(totalCount / 10),
+    changePage: handleOnChangePage,
+    page,
   };
 };

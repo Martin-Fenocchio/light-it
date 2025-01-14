@@ -3,11 +3,26 @@ import React, { createContext, useState } from "react";
 import { IPatient } from "../models/patients-models";
 
 export const GlobalContext = createContext<{
-  patientsList?: IPatient[];
+  patientsList: IPatient[];
+  patientsPage: IPatient[];
+  page: number;
+  searchController: string;
+  setSearchController: React.Dispatch<React.SetStateAction<string>>;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
   setPatientsList?: React.Dispatch<React.SetStateAction<IPatient[]>>;
-  patientsPage?: IPatient[];
   setPatientsPage?: React.Dispatch<React.SetStateAction<IPatient[]>>;
-}>({});
+  totalCount: number;
+  setTotalCount: React.Dispatch<React.SetStateAction<number>>;
+}>({
+  page: 1,
+  searchController: "",
+  patientsList: [],
+  patientsPage: [],
+  totalCount: 0,
+  setTotalCount: () => {},
+  setSearchController: () => {},
+  setPage: () => {},
+});
 
 export const PatientsContextProvider = ({
   children,
@@ -16,10 +31,24 @@ export const PatientsContextProvider = ({
 }) => {
   const [patientsList, setPatientsList] = useState<IPatient[]>([]);
   const [patientsPage, setPatientsPage] = useState<IPatient[]>([]);
+  const [totalCount, setTotalCount] = useState(0);
+  const [searchController, setSearchController] = useState("");
+  const [page, setPage] = useState(0);
 
   return (
     <GlobalContext.Provider
-      value={{ patientsList, setPatientsList, patientsPage, setPatientsPage }}
+      value={{
+        patientsList,
+        totalCount,
+        setTotalCount,
+        setPatientsList,
+        patientsPage,
+        setPatientsPage,
+        page,
+        setPage,
+        searchController,
+        setSearchController,
+      }}
     >
       {children}
     </GlobalContext.Provider>
