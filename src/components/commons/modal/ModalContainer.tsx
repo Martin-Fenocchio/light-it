@@ -9,11 +9,16 @@ interface Props {
 
 export default function ModalContainer(props: Props) {
   return (
-    <div className="patient-modal-container">
+    <div className="patient-modal-container" data-testid="modal">
       <section className="patient-modal">
         <h3>
           {props.title}
-          <img src={CloseModalIcon} alt="Close modal" onClick={props.close} />
+          <img
+            src={CloseModalIcon}
+            alt="Close modal"
+            onClick={props.close}
+            data-testid="close-moda"
+          />
         </h3>
 
         <p>{props.desc}</p>
