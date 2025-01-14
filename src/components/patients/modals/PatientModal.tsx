@@ -1,47 +1,29 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useForm } from "react-hook-form";
 import { IPatient } from "../../../models/patients-models";
-import { useEffect, useState } from "react";
 import { formatDate } from "../../../utils/misc-utils";
 import Button from "../../commons/button/Button";
-import { toast } from "react-toastify";
 import ModalContainer from "../../commons/modal/ModalContainer";
 import PatientForm from "../form/PatientForm";
+import { usePatientModal } from "../../../hooks/usePatientModal";
 
 interface Props {
   close: () => void;
   patient: IPatient;
 }
 
-function PatientModal({ patient, ...props }: Props) {
+function PatientModal(props: Props) {
   const {
     register,
-    setValue,
+    errors,
     handleSubmit,
-    clearErrors,
-    formState: { errors },
-  } = useForm();
-  const [thereIsImage, setThereIsImage] = useState(true);
-  const [editMode, setEditMode] = useState(false);
+    thereIsImage,
+    editMode,
+    handleSetData,
+    setThereIsImage,
+    handleOnEdit,
+    setEditMode,
+  } = usePatientModal(props);
 
-  const handleSetData = () => {
-    setEditMode(false);
-    setValue("name", patient.name);
-    setValue("website", patient.website);
-    setValue("description", patient.description);
-    clearErrors();
-  };
-
-  const handleOnEdit = () => {
-    props.close();
-    toast.success("Information updated successfully", {
-      autoClose: 2000,
-    });
-  };
-
-  useEffect(() => {
-    handleSetData();
-  }, []);
+  const patient = props.patient;
 
   return (
     <ModalContainer
