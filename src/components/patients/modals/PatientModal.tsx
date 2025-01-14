@@ -46,8 +46,7 @@ function PatientModal({ patient, ...props }: Props) {
   return (
     <ModalContainer
       title="Patient information"
-      desc=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-          tincidunt, nunc sed ultrices tincidunt"
+      desc="In this section you can see the patient information and update it."
       close={props.close}
     >
       {thereIsImage && (

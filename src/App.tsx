@@ -1,12 +1,17 @@
+//Setup
+import { ToastContainer } from "react-toastify";
+import { PatientsContextProvider } from "./context/patients-context";
+
+// Layout
+import Header from "./components/header/Header";
 import PatientsList from "./components/patients/PatientsList";
+import Pagination from "./components/pagination/Pagination";
+
+// Styles
 import "./styles/global.scss";
 import "./styles/common.scss";
 import "./styles/patients.scss";
 import "animate.css";
-import { ToastContainer } from "react-toastify";
-import Header from "./components/header/Header";
-import { PatientsContextProvider } from "./context/patients-context";
-import Pagination from "./components/pagination/Pagination";
 
 function App() {
   return (

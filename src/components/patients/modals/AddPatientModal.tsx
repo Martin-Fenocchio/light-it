@@ -25,8 +25,7 @@ function AddPatientModal(props: Props) {
   return (
     <ModalContainer
       title="Add patient"
-      desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-          tincidunt, nunc sed ultrices tincidunt"
+      desc="In this section you can add a new patient"
       close={props.close}
     >
       <PatientForm

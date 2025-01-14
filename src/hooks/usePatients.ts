@@ -22,7 +22,7 @@ export const usePatients = (config: { fetch?: boolean }) => {
 
   const [isLoadingList, setIsLoadingList] = useState(false);
 
-  const handleGetPatients = async () => {
+  const handleFetchPatients = async () => {
     setIsLoadingList(true);
 
     const response = await axios.get(
@@ -58,14 +58,10 @@ export const usePatients = (config: { fetch?: boolean }) => {
     setPatientsPage?.(filteredList.slice(skip, skip + 12));
   };
 
-  const handleOnChangePage = (payload: number) => {
-    setPage(payload);
-  };
-
   useEffect(getPatientsPage, [searchController, page]);
 
   useEffect(() => {
-    if (config.fetch) handleGetPatients();
+    if (config.fetch) handleFetchPatients();
   }, []);
 
   return {
@@ -75,7 +71,7 @@ export const usePatients = (config: { fetch?: boolean }) => {
     handleonChangeSearch,
     patientsList: patientsList || [],
     amountOfPages: Math.ceil(totalCount / 12),
-    changePage: handleOnChangePage,
+    changePage: setPage,
     page,
   };
 };
