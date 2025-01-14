@@ -1,14 +1,13 @@
-import { IPatient } from "../../models/patients-models";
+import { usePatients } from "../../hooks/usePatients";
 import PatientItem from "./PatientItem";
 
-interface Props {
-  patientsList: IPatient[];
-}
+function PatientsList() {
+  const { patientsPage } = usePatients({ fetch: true });
+  console.log("patientsPage", patientsPage);
 
-function PatientsList({ patientsList }: Props) {
   return (
     <section className="patients-list">
-      {patientsList.map((patient) => (
+      {patientsPage.map((patient) => (
         <PatientItem patient={patient} key={patient.id} />
       ))}
     </section>

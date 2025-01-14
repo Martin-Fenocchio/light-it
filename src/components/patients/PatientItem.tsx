@@ -10,7 +10,6 @@ interface Props {
 function PatientItem({ patient }: Props) {
   const [imageExists, setImageExists] = useState(true);
   const [showModal, setShowModal] = useState(false);
-  const colors = ["#FFD6BA", "#FFC0CB", "#B0E0E6", "#98FB98", "#FFA07A"];
 
   const getInitials = () => {
     const names = patient.name.split(" ");
@@ -25,7 +24,7 @@ function PatientItem({ patient }: Props) {
       <article className="patient-item">
         <header
           style={{
-            backgroundColor: colors[Math.floor(Math.random() * colors.length)],
+            backgroundColor: patient.color,
           }}
         />
         <div className="avatar">

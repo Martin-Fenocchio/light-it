@@ -4,5 +4,6 @@ export interface IPatient {
   avatar: string;
   description: string;
   website: string;
+  color: string;
   id: string;
 }

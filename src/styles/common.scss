@@ -81,3 +81,17 @@
     }
   }
 }
+
+.header-layout {
+  @include between;
+  max-width: 1024px;
+  margin: auto;
+  margin-top: 32px;
+  width: 100%;
+
+  .input-text-container input {
+    height: 46px;
+    width: 300px;
+    padding-left: 16px;
+  }
+}
