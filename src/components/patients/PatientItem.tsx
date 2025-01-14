@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IPatient } from "../../models/patients-models";
 import Chevron from "../../styles/assets/chevron-right.svg";
-import PatientModal from "./PatientModal";
+import PatientModal from "./modals/PatientModal";
 
 interface Props {
   patient: IPatient;
