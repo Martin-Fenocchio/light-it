@@ -1,50 +1,59 @@
-# React + TypeScript + Vite
+# Frontend challenge for LightIt 🌐
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the **implementation** for the **Patient Data Management** project. The application is built with **React.js**, leveraging modern tools and libraries like **React useContext**, **Custom Hooks**, **Axios**, and **SASS** to create an efficient and user-friendly interface.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- **Pagination:** Efficiently display paginated data.
+- **Global State Management:** Implemented with `useContext` for lightweight state handling.
+- **Responsive Design:** Styled with **SASS** for modular and maintainable CSS.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## 🛠️ Installation
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Martin-Fenocchio/light-it.git
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run the development server:
+
+```bash
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+---
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Testing Overview
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+This project utilizes **Vitest** and **React Testing Library** to ensure the reliability and functionality of components and hooks. Below is a summary of the tests implemented:
+
+### `usePatients` Hook Tests
+
+- **Fetching Patients**: Tests that the `handleFetchPatients` function correctly fetches patient data from the API and updates the state with the received data.
+- **Loading State**: Verifies that the `isLoadingList` state is set to `true` while fetching data and is set to `false` after the fetch completes.
+- **Error Handling**: Ensures that the hook handles errors gracefully when the API call fails, resulting in an empty patient list and the loading state being reset.
+
+### `PatientItem` Component Tests
+
+- **Rendering Patient Information**: Confirms that the patient's name and description are rendered correctly in the component.
+- **Image Error Handling**: Tests that the component displays the patient's initials when the avatar image fails to load.
+- **Modal Functionality**: Verifies that the modal opens when the "More details" button is clicked and contains the correct patient information. It also checks that the modal closes when the "Close" button is clicked.
+
+These tests help maintain the integrity of the application and ensure that components behave as expected under various scenarios.
+
+## Design decisions
+
+The patient data is visually presented through a grid-based card layout, optimizing the UI's spatial usage. Initially, I considered various approaches for the "expanded" card design to display additional details. Ultimately, I opted for a modal-based solution, ensuring the data is presented in a clear and concise manner, with an update button conveniently located within the modal.
+
+To further demonstrate my proficiency in React, I implemented pagination and search filtering capabilities on the page. This was achieved by leveraging a combination of useContext and custom hooks, resulting in enhanced performance and code quality.
+
+In adherence to the guidelines prohibiting the use of UI libraries, I chose to utilize SCSS for all styling needs, showcasing my expertise in CSS.
+
+For components with complex logic, I developed custom hooks to facilitate code readability, separate concerns, and address potential testing challenges.
