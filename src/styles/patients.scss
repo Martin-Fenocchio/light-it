@@ -83,6 +83,18 @@
       }
     }
   }
+
+  @media (max-width: 1110px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 850px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 490px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .patient-modal-container {
@@ -98,6 +110,9 @@
     background-color: white;
     padding: 32px;
     max-width: 550px;
+    max-height: 95vh;
+    overflow-y: scroll;
+    margin: 0px 32px;
     box-shadow: 10px 10px 0px 0px #ffd6ba;
 
     .avatar {
