@@ -171,3 +171,12 @@ main {
     }
   }
 }
+
+.skeleton {
+  width: 100%;
+
+  .react-loading-skeleton {
+    border-radius: 16px;
+    height: 255px;
+  }
+}

@@ -5,9 +5,10 @@ import PatientModal from "./modals/PatientModal";
 
 interface Props {
   patient: IPatient;
+  index: number;
 }
 
-function PatientItem({ patient }: Props) {
+function PatientItem({ patient, ...props }: Props) {
   const [imageExists, setImageExists] = useState(true);
   const [showModal, setShowModal] = useState(false);
 
@@ -21,7 +22,12 @@ function PatientItem({ patient }: Props) {
 
   return (
     <>
-      <article className="patient-item">
+      <article
+        className="patient-item animate__animated animate__fadeIn"
+        style={{
+          animationDelay: `${props.index ? props.index * 0.1 : 0}s`,
+        }}
+      >
         <header
           style={{
             backgroundColor: patient.color,

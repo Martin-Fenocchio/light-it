@@ -9,7 +9,7 @@ function Header() {
 
   return (
     <>
-      <header className="header-layout">
+      <header className="header-layout animate__animated animate__fadeInDown">
         <div className="input-text-container">
           <input
             type="search"

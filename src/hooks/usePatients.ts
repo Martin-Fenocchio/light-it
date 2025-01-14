@@ -74,7 +74,7 @@ export const usePatients = (config: { fetch?: boolean }) => {
     searchController,
     handleonChangeSearch,
     patientsList: patientsList || [],
-    amountOfPages: Math.ceil(totalCount / 10),
+    amountOfPages: Math.ceil(totalCount / 12),
     changePage: handleOnChangePage,
     page,
   };
