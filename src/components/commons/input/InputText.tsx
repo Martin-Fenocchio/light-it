@@ -19,6 +19,7 @@ function InputText(props: Props) {
     className: "input-text",
     "data-has-error": props.error != null,
   } as InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement>;
+
   return (
     <div className="input-text-container">
       {props.label && <label>{props.label}</label>}

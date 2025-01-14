@@ -16,9 +16,68 @@
     border-radius: 4px;
     font-size: 14px;
     width: 100%;
+
+    &[data-has-error="true"] {
+      border-color: red;
+    }
+  }
+
+  .validation-input-text {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 21.6px;
+    text-align: left;
+    color: red;
+    margin-top: 4px;
+    width: 100%;
   }
 
   textarea {
     min-height: 150px;
+  }
+
+  .textarea-disabled {
+    background-color: #fafafa;
+  }
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+  height: 46px;
+  padding: 0px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+
+  &[data-theme="primary"] {
+    background-color: rgb(56, 56, 253);
+    border: 1px solid rgb(56, 56, 253);
+
+    &:hover {
+      background-color: rgb(21, 21, 210);
+      border-color: rgb(21, 21, 210);
+    }
+  }
+
+  &[data-theme="danger"] {
+    background-color: rgb(240, 10, 6);
+    border: 1px solid rgb(253, 56, 56);
+
+    &:hover {
+      background-color: rgb(218, 19, 19);
+      border-color: rgb(253, 56, 56);
+    }
+  }
+
+  &[data-theme="success"] {
+    background-color: rgb(3, 188, 58);
+    border: 1px solid rgb(3, 188, 58);
+
+    &:hover {
+      background-color: rgb(3, 151, 47);
+      border-color: rgb(3, 151, 47);
+    }
   }
 }

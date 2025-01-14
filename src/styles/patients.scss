@@ -130,5 +130,11 @@
       justify-content: space-between;
       margin-top: 16px;
     }
+
+    footer {
+      @include flex;
+      gap: 16px;
+      margin-top: 32px;
+    }
   }
 }
