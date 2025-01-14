@@ -52,7 +52,83 @@
       padding: 0px 16px;
       text-align: center;
       margin-bottom: 16px;
+      min-height: 38px;
       font-size: 14px;
+    }
+
+    button {
+      @include flex;
+      justify-content: flex-end;
+      gap: 8px;
+      width: 100%;
+      background-color: white;
+      border: none;
+      padding: 6px 4px;
+      border-top: 1px solid rgb(227, 227, 227);
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
+      cursor: pointer;
+
+      img {
+        width: 24px;
+      }
+
+      &:hover {
+        background-color: black;
+        color: white;
+
+        img {
+          filter: invert(1);
+        }
+      }
+    }
+  }
+}
+
+.patient-modal-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  @include center;
+  background-color: rgba(0, 0, 0, 0.38);
+
+  .patient-modal {
+    background-color: white;
+    padding: 32px;
+    max-width: 550px;
+    box-shadow: 10px 10px 0px 0px #ffd6ba;
+
+    .avatar {
+      object-fit: cover;
+      border-radius: 100%;
+      margin-top: 32px;
+      height: 80px;
+      width: 80px;
+    }
+
+    h3 {
+      @include between;
+      margin-bottom: 16px;
+
+      img {
+        width: 16px;
+        cursor: pointer;
+      }
+    }
+
+    form {
+      @include column;
+      margin-top: 32px;
+      gap: 16px;
+      width: 100%;
+    }
+
+    .row {
+      @include flex;
+      justify-content: space-between;
+      margin-top: 16px;
     }
   }
 }

@@ -1,6 +1,7 @@
 import PatientsList from "./components/patients/PatientsList";
 import { usePatients } from "./hooks/usePatients";
 import "./styles/global.scss";
+import "./styles/common.scss";
 import "./styles/patients.scss";
 
 function App() {
