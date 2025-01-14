@@ -3,7 +3,9 @@ import SkeletonLoading from "../commons/skeleton/SkeletonLoading";
 import PatientItem from "./PatientItem";
 
 function PatientsList() {
-  const { patientsPage, isLoadingList } = usePatients({ fetch: true });
+  const { patientsPage, isLoadingList, searchController } = usePatients({
+    fetch: true,
+  });
 
   return (
     <section className="patients-list">
@@ -14,6 +16,12 @@ function PatientsList() {
       {patientsPage.map((patient, index) => (
         <PatientItem patient={patient} key={patient.id} index={index} />
       ))}
+
+      {!isLoadingList && patientsPage.length == 0 && searchController && (
+        <div className="empty-table-placeholder">
+          <p>No users with `{searchController}`</p>
+        </div>
+      )}
     </section>
   );
 }

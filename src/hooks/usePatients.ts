@@ -50,6 +50,7 @@ export const usePatients = (config: { fetch?: boolean }) => {
 
   const handleonChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchController(e.target.value);
+    if (page !== 0) setPage(0);
   };
 
   const getPatientsPage = () => {
